@@ -16,6 +16,10 @@ public class App {
             if (answer.equals("exit")) {
                 break;
             }
+            if (answer.equals("Delete")) {
+                calculator.removeResult();
+                continue;
+            }
 
 
             System.out.println("첫번째 숫자를 입력하세요 : ");
@@ -28,12 +32,19 @@ public class App {
 
             calculator.calculate(num1, operator, num2);
 
-            double result= calculator.getResult();
-            System.out.println(result);
+
+            double result = 0.0; // 기본값 설정
+
+            if (!calculator.getResults().isEmpty()) {
+                result = calculator.getResults().get(calculator.getResults().size() - 1);
+                System.out.println("계산결과는 "+result);
+            } else {
+                System.out.println("결과값이 없습니다");
+            }
 
         }while (true);
 
     }
-}
 
+}
 
